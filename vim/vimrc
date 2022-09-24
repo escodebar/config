@@ -1,13 +1,17 @@
 call plug#begin('~/.vim/plugged')
-Plug 'VundleVim/Vundle.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'davidhalter/jedi-vim'
+Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'habamax/vim-asciidoctor'
-Plug 'prettier/vim-prettier'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'shime/vim-livedown'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['vue', 'javascript'],
+  \ }
+Plug 'psf/black', { 'branch': 'stable' }
+Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
@@ -24,6 +28,7 @@ set background=light
 set encoding=utf8
 set ffs=unix,dos,mac
 set hlsearch
+set hidden
 set incsearch
 set lazyredraw
 set laststatus=2
@@ -66,38 +71,43 @@ syntax enable
 let mapleader=","
 nnoremap <leader>ve :vsplit ~/.vimrc<CR>
 nnoremap <leader>vs :source ~/.vimrc<CR>
-nnoremap <leader>ne :NERDTreeToggle<cr>
-nnoremap <F2> :bp<CR>
-nnoremap <F3> :ls<CR>
-nnoremap <F4> :bw<CR>
-nnoremap <F5> :bn<CR>
+nnoremap <leader>ze :vsplit ~/.zshrc<CR>
+nnoremap <leader>ne :NERDTreeToggleVCS<CR>
+nnoremap <leader>fz :FZF<CR>
+nnoremap <F1> :bp<CR>
+nnoremap <F2> :Buffers<CR>
+nnoremap <F3> :bw<CR>
+nnoremap <F4> :bn<CR>
+nnoremap <F6> :tabp<CR>
+nnoremap <F8> :tabc<CR>
+nnoremap <F9> :tabn<CR>
 nnoremap <C-h> <C-W><C-h>
 nnoremap <C-t> <C-W><C-j>
 nnoremap <C-n> <C-W><C-k>
 nnoremap <C-s> <C-W><C-l>
+nnoremap <C-p> :Files<CR>
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
+vnoremap <silent> <leader>xc :'<,'>w !xclip -selection clipboard<CR>
 let g:airline_powerline_fonts=1
 let g:airline_theme='base16'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = "unique_tail_improved"
-let g:ctrlp_follow_symlinks = 1
-let g:go_def_mapping_enabled = 0
-let g:jedi#completions_enabled=1
-let g:jedi#popup_on_dot=0
-let g:jedi#show_call_signatures=2
-let g:NERDTreeIgnore=['__pycache__']
+let g:airline#extensions#tabline#buffer_nr_show=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#formatter="unique_tail_improved"
+let g:ctrlp_follow_symlinks=1
+let g:go_def_mapping_enabled=0
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+let g:NERDTreeIgnore = ['__pycache__', 'node_modules']
+let g:NERDTreeRespectWildIgnore=1
 let g:solarized_bold=0
 let g:solarized_italic=0
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
+let g:syntastic_check_on_open=0
 let g:syntastic_check_on_wq=0
-let g:syntastic_c_checkers = ['splint', 'clang_check', 'make', 'gcc']
-let g:syntastic_html_checkers = ['tidy']
+let g:syntastic_c_checkers=['splint', 'clang_check', 'make', 'gcc']
+let g:syntastic_html_checkers=['tidy']
 let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_python_checkers = ['flake8']
-augroup ON_ASCIIDOCTOR_SAVE | au!
-	au BufWritePost README.adoc :Asciidoctor2HTML
-augroup end
+let g:syntastic_python_flake8_args='--ignore=F821,E302,E501,W503'
+autocmd BufWritePre *.py execute ':Black'
+autocmd BufWritePre *.vue,*.js,*.mjs execute ':Prettier'

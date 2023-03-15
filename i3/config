@@ -4,7 +4,8 @@ floating_modifier $mod
 bindsym $mod+Return exec terminator
 bindsym $mod+Shift+q kill
 bindsym $mod+l exec i3lock -c 002b36 -n -e
-bindsym $mod+d exec dmenu_run -fn 'Inconsolata-10'
+bindsym $mod+d exec dmenu_run -fn 'Inconsolata-20'
+bindsym $mod+Shift+d exec clipmenu -fn 'Inconsolata-20'
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up

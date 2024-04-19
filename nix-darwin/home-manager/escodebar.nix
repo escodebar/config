@@ -4,6 +4,18 @@
   programs.direnv.enable = true;
   programs.eza.enable = true;
   programs.fzf.enable = true;
+  programs.git = {
+    enable = true;
+    extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
+      core = {
+        userName = "Pablo Escodebar";
+        userEmail = "escodebar@gmail.com";
+      };
+    };
+  };
   programs.home-manager.enable = true;
   programs.zsh = {
     autosuggestion.enable = true;

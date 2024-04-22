@@ -5,11 +5,9 @@
     fasd
     fd
     fzf
-    git
     powerline
     ranger
     ripgrep
-    tmux
     tree
     vim-configured
     vscode-configured

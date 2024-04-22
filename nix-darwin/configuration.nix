@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   revision,
   ...
@@ -14,4 +15,12 @@ in {
   services.nix-daemon.enable = true;
   system.configurationRevision = revision;
   system.stateVersion = 4;
+  programs.tmux = {
+    enable = true;
+    extraConfig =
+      ''
+        source ${pkgs.powerline}/share/tmux/powerline.conf
+      ''
+      + lib.readFile ./configs/tmuxrc;
+  };
 }

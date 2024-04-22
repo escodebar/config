@@ -1,10 +1,4 @@
-source /nix/store/sskp2cigrvkr63f777dz2xq5xxx46z03-python3.11-powerline-2.8.3/lib/python3.11/site-packages/powerline/bindings/tmux/powerline.conf
-
-set-option -g default-shell /bin/zsh
-
 setw -g mode-keys vi
-
-set -g default-terminal "tmux-256color"
 
 bind-key v split-window -h
 bind-key s split-window -v
@@ -38,5 +32,3 @@ bind -n M-6     select-window -t :=6
 bind -n M-7     select-window -t :=7
 bind -n M-8     select-window -t :=8
 bind -n M-9     select-window -t :=9
-
-bind -n M-. source-file ~/.config/tmux/tmux.conf

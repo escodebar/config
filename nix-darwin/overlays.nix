@@ -42,6 +42,7 @@
       vscodeExtensions = with prev.pkgs.vscode-extensions; [
         bbenoist.nix
         editorconfig.editorconfig
+        esbenp.prettier-vscode
         kamadorueda.alejandra
         mkhl.direnv
         ms-python.black-formatter

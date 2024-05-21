@@ -6,6 +6,7 @@
     fd
     fzf
     powerline
+    pyenv
     ranger
     ripgrep
     tree

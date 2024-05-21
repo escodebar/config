@@ -9,7 +9,9 @@
     pyenv
     ranger
     ripgrep
+    sops
     tree
+    vault
     vim-configured
     vscode-configured
   ];

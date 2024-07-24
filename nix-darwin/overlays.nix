@@ -48,6 +48,7 @@
         ms-python.black-formatter
         ms-python.python
         vscodevim.vim
+        vue.volar
       ];
     };
   };

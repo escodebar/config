@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     alejandra
     direnv
+    docker
     fasd
     fd
     fzf

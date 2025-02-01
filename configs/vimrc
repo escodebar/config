@@ -1,0 +1,70 @@
+filetype plugin indent on
+colorscheme solarized
+set backspace=eol,start,indent
+set background=light
+set encoding=utf8
+set ffs=unix,dos,mac
+set hlsearch
+set hidden
+set incsearch
+set lazyredraw
+set laststatus=2
+set magic
+set mat=2
+set mouse=r
+set nobackup
+set noerrorbells
+set noswapfile
+set novisualbell
+set nowritebackup
+set number
+set ruler
+set showmatch
+set showtabline=2
+set noshowmode
+set smartindent
+set splitbelow
+set splitright
+set statusline+=%#warningmsg#
+set statusline+=%*
+set ttimeoutlen=50
+set whichwrap+=<,>,h,l
+set wildmenu
+set wildmode=longest:full
+set wrap
+syntax enable
+let mapleader=","
+nnoremap <leader>ve :vsplit ~/.vimrc<CR>
+nnoremap <leader>vs :source ~/.vimrc<CR>
+nnoremap <leader>ze :vsplit ~/.zshrc<CR>
+nnoremap <leader>fz :FZF<CR>
+nnoremap <F1> :bp<CR>
+nnoremap <F2> :Buffers<CR>
+nnoremap <F3> :bw<CR>
+nnoremap <F4> :bn<CR>
+nnoremap <F6> :tabp<CR>
+nnoremap <F8> :tabc<CR>
+nnoremap <F9> :tabn<CR>
+nnoremap <C-h> <C-W><C-h>
+nnoremap <C-t> <C-W><C-j>
+nnoremap <C-n> <C-W><C-k>
+nnoremap <C-s> <C-W><C-l>
+nnoremap <C-p> :Files<CR>
+vnoremap <silent> * :call VisualSelection('f')<CR>
+vnoremap <silent> # :call VisualSelection('b')<CR>
+vnoremap <silent> <leader>xc :'<,'>w !xclip -selection clipboard<CR>
+let g:go_def_mapping_enabled=0
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+let g:solarized_bold=0
+let g:solarized_italic=0
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=0
+let g:syntastic_check_on_wq=0
+let g:syntastic_c_checkers=['splint', 'clang_check', 'make', 'gcc']
+let g:syntastic_html_checkers=['tidy']
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_python_flake8_args='--ignore=F821,E302,E501,W503'
+autocmd BufWritePre *.py execute ':Black'
+autocmd BufWritePre *.vue,*.js,*.mjs execute ':Prettier'
+autocmd BufWritePre *.nix execute ':%!alejandra -qq'

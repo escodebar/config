@@ -4,6 +4,9 @@
   pkgs,
   ...
 }: {
+  home.sessionVariables = {
+    EDITOR = "vim";
+  };
   home.stateVersion = "24.05";
   programs.autojump.enable = true;
   programs.direnv.enable = true;

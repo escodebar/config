@@ -15,13 +15,9 @@
   programs.git = {
     enable = true;
     extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-      core = {
-        userName = "Pablo Escodebar";
-        userEmail = "escodebar@gmail.com";
-      };
+      init.defaultBranch = "main";
+      user.name = "Pablo Escodebar";
+      user.email = "escodebar@gmail.com";
     };
   };
   programs.home-manager.enable = true;

@@ -24,16 +24,22 @@
     }: {
       environment.systemPackages = with pkgs; [
         alejandra
+        black
         curl
         docker
         fasd
         fd
+        nodePackages.prettier
         powerline
         ranger
         ripgrep
         tree
         vim-configured
       ];
+      environment.variables = {
+        EDITOR = "vim";
+        FZF_DEFAULT_COMMAND = "fd --type f";
+      };
       nix.settings.experimental-features = "nix-command flakes";
       nixpkgs.hostPlatform = "aarch64-darwin";
       system.configurationRevision = self.rev or self.dirtyRev or null;

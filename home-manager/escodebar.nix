@@ -6,6 +6,7 @@
 }: {
   home.sessionVariables = {
     EDITOR = "vim";
+    FZF_DEFAULT_COMMAND = "fd --type f";
   };
   home.stateVersion = "24.05";
   programs.autojump.enable = true;

@@ -56,7 +56,11 @@
     };
     overlays = let
       vim-overlay = final: prev: let
-        python = prev.pkgs.python312.withPackages (ps: with ps; [powerline]);
+        python = prev.pkgs.python312.withPackages (ps:
+          with ps; [
+            black
+            powerline
+          ]);
         vim-powerline = prev.pkgs.vimUtils.buildVimPlugin {
           name = "powerline";
           namePrefix = "vim-";

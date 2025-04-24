@@ -59,8 +59,19 @@
         python = prev.pkgs.python312.withPackages (ps:
           with ps; [
             black
+            distutils
             powerline
           ]);
+        vim-black = prev.pkgs.vimUtils.buildVimPlugin {
+          name = "black";
+          namePrefix = "vim-";
+          src = prev.pkgs.fetchFromGitHub {
+            owner = "EgZvor";
+            repo = "vim-black";
+            rev = "main";
+            sha256 = "sha256-EY0P0WfFCj5FEPj/hIMeua/1HR9/ZO1l0MbMTtgU9FM=";
+          };
+        };
         vim-powerline = prev.pkgs.vimUtils.buildVimPlugin {
           name = "powerline";
           namePrefix = "vim-";
@@ -83,6 +94,7 @@
                     editorconfig-vim
                     fzf-vim
                     syntastic
+                    vim-black
                     vim-colors-solarized
                     vim-fugitive
                     vim-powerline

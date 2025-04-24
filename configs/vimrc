@@ -65,6 +65,6 @@ let g:syntastic_c_checkers=['splint', 'clang_check', 'make', 'gcc']
 let g:syntastic_html_checkers=['tidy']
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_python_flake8_args='--ignore=F821,E302,E501,W503'
-autocmd BufWritePre *.py execute ':Black'
+autocmd BufWritePre *.py execute ':%!black - -q'
 autocmd BufWritePre *.vue,*.js,*.mjs execute ':Prettier'
 autocmd BufWritePre *.nix execute ':%!alejandra -qq'

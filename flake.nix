@@ -29,6 +29,7 @@
         docker
         fasd
         fd
+        lynx
         nodePackages.prettier
         powerline
         ranger

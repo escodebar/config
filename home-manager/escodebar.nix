@@ -10,6 +10,45 @@
   };
   home.stateVersion = "24.05";
   programs.autojump.enable = true;
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      font = let
+        family = "PragmataPro Mono Liga";
+      in {
+        normal = {
+          inherit family;
+        };
+        bold = {
+          inherit family;
+          style = "regular";
+        };
+        italic = {
+          inherit family;
+        };
+        bold_italic = {
+          inherit family;
+          style = "italic";
+        };
+        size = 14;
+      };
+      general.import = ["${pkgs.alacritty-theme}/solarized_light.toml"];
+      terminal.shell = {
+        program = "${pkgs.tmux}/bin/tmux";
+        args = [
+          "new-session"
+          "-A"
+          "-D"
+          "-s"
+          "main"
+        ];
+      };
+      window = {
+        decorations = "None";
+        startup_mode = "FullScreen";
+      };
+    };
+  };
   programs.direnv.enable = true;
   programs.eza.enable = true;
   programs.fzf.enable = true;

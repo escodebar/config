@@ -61,6 +61,13 @@
     };
   };
   programs.home-manager.enable = true;
+  programs.rbw = {
+    enable = true;
+    settings = {
+      email = "pablo.verges@gmail.com";
+      pinentry = pkgs.pinentry-tty;
+    };
+  };
   programs.zsh = {
     autosuggestion.enable = true;
     dotDir = ".config/zsh";

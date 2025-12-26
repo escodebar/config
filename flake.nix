@@ -9,10 +9,15 @@
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    alacritty-theme = {
+      url = "github:alexghr/alacritty-theme.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
     self,
+    alacritty-theme,
     home-manager,
     nix-darwin,
     nixpkgs,
@@ -45,14 +50,6 @@
       nixpkgs.hostPlatform = "aarch64-darwin";
       system.configurationRevision = self.rev or self.dirtyRev or null;
       system.stateVersion = 6;
-      programs.tmux = {
-        enable = true;
-        extraConfig =
-          ''
-            source ${pkgs.powerline}/share/tmux/powerline.conf
-          ''
-          + lib.readFile ./configs/tmuxrc;
-      };
       users.users.escodebar.home = /Users/escodebar;
     };
     overlays = let
@@ -109,6 +106,7 @@
       };
     in {
       nixpkgs.overlays = [
+        alacritty-theme.overlays.default
         vim-overlay
       ];
     };

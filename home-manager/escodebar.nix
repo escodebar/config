@@ -32,15 +32,12 @@
         };
         size = 14;
       };
-      general.import = ["${pkgs.alacritty-theme}/solarized_light.toml"];
+      general.import = [pkgs.alacritty-theme.solarized_light];
       terminal.shell = {
-        program = "${pkgs.tmux}/bin/tmux";
+        program = "${pkgs.bash}/bin/bash";
         args = [
-          "new-session"
-          "-A"
-          "-D"
-          "-s"
-          "main"
+          "-lc"
+          "exec tmux new-session -A -s main"
         ];
       };
       window = {
@@ -51,10 +48,13 @@
   };
   programs.direnv.enable = true;
   programs.eza.enable = true;
-  programs.fzf.enable = true;
+  programs.fzf = {
+    enable = true;
+    tmux.enableShellIntegration = true;
+  };
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings = {
       init.defaultBranch = "main";
       user.name = "Pablo Escodebar";
       user.email = "escodebar@gmail.com";
@@ -68,9 +68,18 @@
       pinentry = pkgs.pinentry-tty;
     };
   };
+  programs.tmux = {
+    enable = true;
+    extraConfig = lib.readFile ../configs/tmuxrc;
+    plugins = with pkgs; [
+      tmuxPlugins.tmux-powerline
+    ];
+    shell = "$SHELL";
+    terminal = "alacritty";
+  };
   programs.zsh = {
     autosuggestion.enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.home.homeDirectory}/.config/zsh";
     enable = true;
     enableCompletion = true;
     history.ignoreAllDups = true;

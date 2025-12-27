@@ -34,9 +34,8 @@ set wildmode=longest:full
 set wrap
 syntax enable
 let mapleader=","
-nnoremap <leader>ve :vsplit ~/.vimrc<CR>
-nnoremap <leader>vs :source ~/.vimrc<CR>
-nnoremap <leader>ze :vsplit ~/.zshrc<CR>
+nnoremap <leader>ve :vsplit ~/repos/config/configs/vimrc<CR>
+nnoremap <leader>vs :source ~/repos/config/configs/vimrc<CR>
 nnoremap <leader>fz :FZF<CR>
 nnoremap <F1> :bp<CR>
 nnoremap <F2> :Buffers<CR>

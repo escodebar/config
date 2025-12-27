@@ -49,6 +49,7 @@ nnoremap <C-t> <C-W><C-j>
 nnoremap <C-n> <C-W><C-k>
 nnoremap <C-s> <C-W><C-l>
 nnoremap <C-p> :Files<CR>
+nnoremap <C-y> :RG<CR>
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 vnoremap <silent> <leader>xc :'<,'>w !xclip -selection clipboard<CR>

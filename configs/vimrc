@@ -70,4 +70,12 @@ augroup autoformat_settings
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType python AutoFormatBuffer black
 augroup END
-autocmd BufWritePre *.nix execute ':%!alejandra -qq'
+function! NixFormat()
+  let l:view = winsaveview()
+  %!alejandra -qq
+  call winrestview(l:view)
+endfunction
+augroup nix_fmt
+  autocmd!
+  autocmd BufWritePre *.nix call NixFormat()
+augroup END

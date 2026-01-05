@@ -93,6 +93,7 @@
                     fzf-vim
                     syntastic
                     vim-black
+                    vim-codefmt
                     vim-colors-solarized
                     vim-fugitive
                     vim-powerline

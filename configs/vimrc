@@ -65,6 +65,9 @@ let g:syntastic_c_checkers=['splint', 'clang_check', 'make', 'gcc']
 let g:syntastic_html_checkers=['tidy']
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_python_flake8_args='--ignore=F821,E302,E501,W503'
-autocmd BufWritePre *.py execute ':%!black - -q'
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html execute ':Prettier'
+augroup autoformat_settings
+  autocmd FileType css,html,javascript,json,markdown,yaml,vue AutoFormatBuffer prettier
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType python AutoFormatBuffer black
+augroup END
 autocmd BufWritePre *.nix execute ':%!alejandra -qq'

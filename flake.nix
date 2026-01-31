@@ -41,6 +41,7 @@
         ripgrep
         tree
         vim-configured
+        vscode
       ];
       environment.variables = {
         EDITOR = "vim";
@@ -48,6 +49,7 @@
       };
       nix.settings.experimental-features = "nix-command flakes";
       nixpkgs.hostPlatform = "aarch64-darwin";
+      nixpkgs.config.allowUnfree = true;
       system.configurationRevision = self.rev or self.dirtyRev or null;
       system.stateVersion = 6;
       users.users.escodebar.home = /Users/escodebar;

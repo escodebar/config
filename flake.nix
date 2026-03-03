@@ -32,6 +32,7 @@
         black
         curl
         docker
+        entr
         fasd
         fd
         lynx

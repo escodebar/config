@@ -3,10 +3,11 @@
   lib,
   pkgs,
   ...
-}: {
+}: rec {
   home.sessionVariables = {
     EDITOR = "vim";
     FZF_DEFAULT_COMMAND = "fd --type f";
+    SHELL = "${pkgs.zsh}/bin/zsh";
   };
   home.stateVersion = "24.05";
   programs.autojump.enable = true;
@@ -34,7 +35,7 @@
       };
       general.import = [pkgs.alacritty-theme.solarized_light];
       terminal.shell = {
-        program = "${pkgs.bash}/bin/bash";
+        program = home.sessionVariables.SHELL;
         args = [
           "-lc"
           "exec tmux new-session -A -s main"
@@ -74,7 +75,7 @@
     plugins = with pkgs; [
       tmuxPlugins.tmux-powerline
     ];
-    shell = "$SHELL";
+    shell = "${home.sessionVariables.SHELL}";
     terminal = "alacritty";
   };
   programs.zsh = {

@@ -135,13 +135,6 @@
       }
     ];
   };
-  programs.rbw = {
-    enable = true;
-    settings = {
-      email = "pablo.verges@gmail.com";
-      pinentry = pkgs.pinentry-tty;
-    };
-  };
   programs.tmux = {
     enable = true;
     extraConfig = lib.readFile ../configs/tmuxrc;

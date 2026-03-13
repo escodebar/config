@@ -29,6 +29,7 @@
     }: {
       environment.systemPackages = with pkgs; [
         alejandra
+        bash-language-server
         black
         curl
         docker
@@ -36,11 +37,14 @@
         fasd
         fd
         lynx
+        nixd
         nodePackages.prettier
         powerline
+        pyright
         ranger
         ripgrep
         tree
+        typescript-language-server
         vim-configured
         vscode
       ];

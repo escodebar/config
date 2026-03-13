@@ -68,6 +68,20 @@
   };
   programs.gpg.enable = true;
   programs.home-manager.enable = true;
+  programs.neovim = {
+    enable = true;
+    extraConfig = lib.readFile ../configs/neovim;
+    plugins = [
+      {
+        plugin = pkgs.vimPlugins.solarized-nvim;
+        config = ''
+          lua << END
+          require('solarized').set()
+          END
+        '';
+      }
+    ];
+  };
   programs.rbw = {
     enable = true;
     settings = {

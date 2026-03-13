@@ -84,7 +84,25 @@
           END
         '';
       }
-      pkgs.vimPlugins.telescope-nvim
+      {
+        plugin = pkgs.vimPlugins.telescope-nvim;
+        config = ''
+          lua << END
+          local telescope = require("telescope")
+          telescope.setup({
+            extensions = {
+              fzf = {
+                fuzzy = true,
+                override_generic_sorter = true,
+                override_file_sorter = true,
+              }
+            }
+          })
+          telescope.load_extension("fzf")
+          vim.keymap.set("n", "<C-p>", require("telescope.builtin").find_files)
+          END
+        '';
+      }
       pkgs.vimPlugins.telescope-fzf-native-nvim
       {
         plugin = pkgs.vimPlugins.solarized-nvim;

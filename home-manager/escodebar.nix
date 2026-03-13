@@ -56,9 +56,14 @@
   programs.git = {
     enable = true;
     settings = {
+      commit.gpgSign = true;
       init.defaultBranch = "main";
-      user.name = "Pablo Escodebar";
-      user.email = "escodebar@gmail.com";
+      signing.signByDefault = true;
+      user = {
+        name = "Pablo Vergés";
+        email = "hello@pablo.codes";
+        signingKey = "AD62A4F3DBFC7908";
+      };
     };
   };
   programs.gpg.enable = true;

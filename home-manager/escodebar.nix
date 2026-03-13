@@ -84,6 +84,8 @@
           END
         '';
       }
+      pkgs.vimPlugins.telescope-nvim
+      pkgs.vimPlugins.telescope-fzf-native-nvim
       {
         plugin = pkgs.vimPlugins.solarized-nvim;
         config = ''

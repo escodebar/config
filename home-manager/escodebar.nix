@@ -73,6 +73,14 @@
     extraLuaConfig = lib.readFile ../configs/neovim.lua;
     plugins = [
       {
+        plugin = pkgs.vimPlugins.bufferline-nvim;
+        config = ''
+          lua << END
+          require("bufferline").setup{}
+          END
+        '';
+      }
+      {
         plugin = pkgs.vimPlugins.conform-nvim;
         config = ''
           lua << END

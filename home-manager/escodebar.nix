@@ -73,6 +73,18 @@
     extraConfig = lib.readFile ../configs/neovim;
     plugins = [
       {
+        plugin = pkgs.vimPlugins.lualine-nvim;
+        config = ''
+          lua << END
+          require('lualine').setup {
+            options = {
+              theme = 'solarized'
+            }
+          }
+          END
+        '';
+      }
+      {
         plugin = pkgs.vimPlugins.solarized-nvim;
         config = ''
           lua << END

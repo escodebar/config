@@ -5,7 +5,7 @@
   ...
 }: rec {
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "nvim";
     FZF_DEFAULT_COMMAND = "fd --type f";
     SHELL = "${pkgs.zsh}/bin/zsh";
   };
@@ -70,19 +70,7 @@
   programs.home-manager.enable = true;
   programs.neovim = {
     enable = true;
-    extraConfig = lib.readFile ../configs/neovim;
-    extraLuaConfig = ''
-      vim.lsp.enable({
-        "bashls",
-        "nixd",
-        "pyright",
-        "ts_ls",
-      })
-
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition)
-      vim.keymap.set("n", "K", vim.lsp.buf.hover)
-      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
-    '';
+    extraLuaConfig = lib.readFile ../configs/neovim.lua;
     plugins = [
       {
         plugin = pkgs.vimPlugins.conform-nvim;

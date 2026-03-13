@@ -61,6 +61,7 @@
       user.email = "escodebar@gmail.com";
     };
   };
+  programs.gpg.enable = true;
   programs.home-manager.enable = true;
   programs.rbw = {
     enable = true;

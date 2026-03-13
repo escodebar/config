@@ -40,6 +40,7 @@
         nixd
         nodePackages.prettier
         powerline
+        prettierd
         pyright
         ranger
         ripgrep

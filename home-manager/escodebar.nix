@@ -85,6 +85,27 @@
     '';
     plugins = [
       {
+        plugin = pkgs.vimPlugins.conform-nvim;
+        config = ''
+          lua << END
+          require("conform").setup({
+            formatters_by_ft = {
+              javascript = { "prettierd" },
+              nix = { "alejandra" },
+              python = { "black" },
+              typescript = { "prettierd" },
+            },
+          })
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            pattern = "*",
+            callback = function(args)
+              require("conform").format({ bufnr = args.buf })
+            end,
+          })
+          END
+        '';
+      }
+      {
         plugin = pkgs.vimPlugins.lualine-nvim;
         config = ''
           lua << END

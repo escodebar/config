@@ -8,6 +8,33 @@ vim.keymap.set("n", "<F3>", ":bdelete<CR>", { silent = true })
 vim.keymap.set("n", "<F4>", ":bnext<CR>", { silent = true })
 vim.keymap.set("n", "<F5>", ":vsplit ~/repos/config/configs/neovim.lua<CR>", { silent = true, desc = "Edit Neovim config" })
 vim.keymap.set("n", "<F6>", ":source ~/repos/config/configs/neovim.lua<CR>", { silent = true, desc = "Reload Neovim config" })
+vim.lsp.config["bashls"] = {
+  cmd = { "bash-language-server", "start" },
+  filetypes = { "sh", "bash" },
+  root_markers = { ".git" },
+}
+vim.lsp.config["nixd"] = {
+  cmd = { "nixd" },
+  filetypes = { "nix" },
+  root_markers = {
+    "flake.nix",
+    ".git",
+  },
+}
+vim.lsp.config["pyright"] = {
+  cmd = { "pyright-langserver", "--stdio" },
+  filetypes = { "python" },
+  root_markers = {
+    "pyrightconfig.json",
+    "pyproject.toml",
+    ".git",
+  },
+}
+vim.lsp.config["ts_ls"] = {
+  cmd = { "typescript-language-server", "--stdio" },
+  filetypes = { "typescript", "javascript", "json" },
+  root_markers = { ".git" },
+}
 vim.lsp.enable({"bashls", "nixd", "pyright", "ts_ls"})
 vim.opt.hidden = true
 vim.opt.hlsearch = true

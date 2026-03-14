@@ -28,24 +28,16 @@
       ...
     }: {
       environment.systemPackages = with pkgs; [
-        alejandra
-        bash-language-server
-        black
         curl
         docker
         entr
         fasd
         fd
         lynx
-        nixd
-        nodePackages.prettier
         powerline
-        prettierd
-        pyright
         ranger
         ripgrep
         tree
-        typescript-language-server
         vscode
       ];
       environment.variables = {

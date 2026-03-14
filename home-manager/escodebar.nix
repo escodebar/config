@@ -72,6 +72,15 @@
     defaultEditor = true;
     enable = true;
     extraLuaConfig = lib.readFile ../configs/neovim.lua;
+    extraPackages = [
+      pkgs.alejandra
+      pkgs.bash-language-server
+      pkgs.black
+      pkgs.nixd
+      pkgs.prettierd
+      pkgs.pyright
+      pkgs.typescript-language-server
+    ];
     plugins = [
       {
         plugin = pkgs.vimPlugins.bufferline-nvim;

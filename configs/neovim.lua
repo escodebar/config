@@ -2,6 +2,10 @@ vim.g.mapleader = ","
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
+vim.keymap.set("n", "<F1>", ":bprevious<CR>", { silent = true })
+vim.keymap.set("n", "<F2>", ":buffers<CR>", { silent = true })
+vim.keymap.set("n", "<F3>", ":bdelete<CR>", { silent = true })
+vim.keymap.set("n", "<F4>", ":bnext<CR>", { silent = true })
 vim.lsp.enable({
   "bashls",
   "nixd",

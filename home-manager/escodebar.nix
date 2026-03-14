@@ -69,6 +69,7 @@
   programs.gpg.enable = true;
   programs.home-manager.enable = true;
   programs.neovim = {
+    defaultEditor = true;
     enable = true;
     extraLuaConfig = lib.readFile ../configs/neovim.lua;
     plugins = [
@@ -142,6 +143,7 @@
         '';
       }
     ];
+    vimAlias = true;
   };
   programs.tmux = {
     enable = true;

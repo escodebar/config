@@ -100,6 +100,7 @@
               nix = { "alejandra" },
               python = { "black" },
               typescript = { "prettierd" },
+              vue = { "prettierd" },
             },
           })
           vim.api.nvim_create_autocmd("BufWritePre", {

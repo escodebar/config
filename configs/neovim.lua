@@ -8,12 +8,7 @@ vim.keymap.set("n", "<F3>", ":bdelete<CR>", { silent = true })
 vim.keymap.set("n", "<F4>", ":bnext<CR>", { silent = true })
 vim.keymap.set("n", "<F5>", ":vsplit ~/repos/config/configs/neovim.lua<CR>", { silent = true, desc = "Edit Neovim config" })
 vim.keymap.set("n", "<F6>", ":source ~/repos/config/configs/neovim.lua<CR>", { silent = true, desc = "Reload Neovim config" })
-vim.lsp.enable({
-  "bashls",
-  "nixd",
-  "pyright",
-  "ts_ls",
-})
+vim.lsp.enable({"bashls", "nixd", "pyright", "ts_ls"})
 vim.opt.hidden = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true

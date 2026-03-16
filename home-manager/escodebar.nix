@@ -80,6 +80,7 @@
       pkgs.prettierd
       pkgs.pyright
       pkgs.typescript-language-server
+      pkgs.vscode-css-languageserver
     ];
     plugins = [
       {
@@ -96,6 +97,7 @@
           lua << END
           require("conform").setup({
             formatters_by_ft = {
+              css = { "prettierd" },
               javascript = { "prettierd" },
               nix = { "alejandra" },
               python = { "black" },

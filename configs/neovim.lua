@@ -13,6 +13,16 @@ vim.lsp.config["bashls"] = {
   filetypes = { "sh", "bash" },
   root_markers = { ".git" },
 }
+vim.lsp.config["cssls"] = {
+  cmd = { 'vscode-css-language-server', '--stdio' },
+  filetypes = { 'css', 'scss', 'less' },
+  root_markers = { '.git' },
+  settings = {
+    css = { validate = true },
+    scss = { validate = true },
+    less = { validate = true },
+  },
+}
 vim.lsp.config["nixd"] = {
   cmd = { "nixd" },
   filetypes = { "nix" },
@@ -35,7 +45,7 @@ vim.lsp.config["ts_ls"] = {
   filetypes = { "typescript", "javascript", "json" },
   root_markers = { ".git" },
 }
-vim.lsp.enable({"bashls", "nixd", "pyright", "ts_ls"})
+vim.lsp.enable({"bashls", "cssls", "nixd", "pyright", "ts_ls"})
 vim.opt.hidden = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true

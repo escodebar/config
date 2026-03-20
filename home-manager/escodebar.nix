@@ -33,6 +33,31 @@
         };
         size = 14;
       };
+      keyboard.bindings = let
+        setFont = size: {
+          program = "${pkgs.zsh}/bin/zsh";
+          args = [
+            "-c"
+            "${pkgs.alacritty}/bin/alacritty msg config font.size=${builtins.toString size} && clear"
+          ];
+        };
+      in [
+        {
+          key = "Key0";
+          mods = "Command";
+          command = setFont 12;
+        }
+        {
+          key = "Minus";
+          mods = "Command";
+          command = setFont 14;
+        }
+        {
+          key = "Equals";
+          mods = "Command";
+          command = setFont 18;
+        }
+      ];
       general.import = [pkgs.alacritty-theme.solarized_light];
       terminal.shell = {
         program = home.sessionVariables.SHELL;
